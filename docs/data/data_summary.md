@@ -54,7 +54,7 @@ La variable objetivo es el número ganador (NUMERO).
 
 Los gráficos muestran la distribución de los números ganadores en los sorteos de la lotería de Bogotá:
 
-![Distribución de los Números Ganadores](data/graficos_loteria.png)
+![Distribución de los Números Ganadores](graficos_loteria.png)
 
 **Histograma:** Esta visualización muestra la frecuencia de cada número ganador. La distribución parece ser bastante uniforme, lo cual es esperado en un juego de azar como la lotería.
 
@@ -68,15 +68,15 @@ Análisis detallado de las variables NUMERO, SERIE y FECHA:
 
 **NUMERO:** La distribución de los números ganadores es uniforme, lo cual es típico en juegos de azar. No hay una concentración clara hacia números específicos.
 
-![Distribución de los Números](data/grafico_numero.png)
+![Distribución de los Números](grafico_numero.png)
 
 **SERIE:** La distribución de la serie también es bastante uniforme, sin una tendencia clara hacia ciertos números.
 
-![Distribución de las SERIES](data/grafico_serie.png)
+![Distribución de las SERIES](grafico_serie.png)
 
 **FECHA:** La frecuencia de sorteos a lo largo del tiempo muestra variaciones. Es posible observar picos y caídas en la frecuencia de sorteos en diferentes momentos.
 
-![Distribución de SORTEOS](data/grafico_fecha.png)
+![Distribución de SORTEOS](grafico_fecha.png)
 
 
 ## Relación entre variables explicativas y variable objetivo
@@ -85,4 +85,4 @@ La correlación entre las variables en el conjunto de datos de la lotería de Bo
 
 Dado que la lotería es un juego de azar, y asumiendo que las variables como NUMERO y SERIE son aleatorias, Se observan correlaciones cercanas a cero entre estas variables.
 
-![Distribución de SORTEOS](data/matriz_correlacion.png)
+![Distribución de SORTEOS](matriz_correlacion.png)
