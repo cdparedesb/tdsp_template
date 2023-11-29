@@ -14,13 +14,13 @@ print(serie_temporal)
 
 #Modelo 1 serie Temporal
 
-# serie_temporal=serieTemporal()
-# plot_acf(serie_temporal, lags=50)
-# plt.show()
-# plot_pacf(serie_temporal, lags=50)
-# plt.show()
-# resultado_df = adfuller(serie_temporal)
-# print('p-valor: %f' % resultado_df[1])
+serie_temporal=serieTemporal()
+plot_acf(serie_temporal, lags=50)
+plt.show()
+plot_pacf(serie_temporal, lags=50)
+plt.show()
+resultado_df = adfuller(serie_temporal)
+print('p-valor: %f' % resultado_df[1])
 
 modelo = ARIMA(serie_temporal, order=(1, 0, 1))
 modelo_ajustado = modelo.fit()
