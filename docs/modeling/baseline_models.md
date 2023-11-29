@@ -1,24 +1,25 @@
 # Reporte del Modelo Baseline
 
-Este documento contiene los resultados del modelo baseline.
-
 ## Descripción del modelo
 
-El modelo baseline es el primer modelo construido y se utiliza para establecer una línea base para el rendimiento de los modelos posteriores.
+Se construye  como punto de referencia o línea base un modelo baseline ARIMA (Autoregressive Integrated Moving Average) es una técnica estadística de modelado de series temporales que se utiliza para pronosticar datos temporales mediante la combinación de tres componentes principales: autoregresión (AR), diferenciación (I) y promedio móvil (MA).
 
 ## Variables de entrada
 
-Lista de las variables de entrada utilizadas en el modelo.
+* La variable `FECHA`: fecha en que gano el número se encuentra en formato DD-MM-YYYY.
+* Las variables `NÚMERO` Numero ganador del sorteo es de tipo entero categórico.
 
 ## Variable objetivo
 
-Nombre de la variable objetivo utilizada en el modelo.
+`Número ganador de la loteria:`  valor futuro de la serie temporal que se está tratando de predecir.
 
 ## Evaluación del modelo
 
 ### Métricas de evaluación
 
-Descripción de las métricas utilizadas para evaluar el rendimiento del modelo.
+Error Cuadrático Medio (MSE): Es una medida estándar que calcula el promedio de los cuadrados de los errores, es decir, la diferencia cuadrática entre los valores observados y los pronosticados. Un MSE más bajo indica un mejor rendimiento del modelo.
+
+Raíz del Error Cuadrático Medio (RMSE): Es la raíz cuadrada del MSE y proporciona una medida del error en las mismas unidades que la variable objetivo. Al igual que el MSE, un RMSE más bajo indica un mejor modelo.
 
 ### Resultados de evaluación
 
