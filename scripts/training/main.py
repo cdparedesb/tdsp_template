@@ -15,60 +15,44 @@ from eda.main import serieTemporal, columCategorica,splitData
 serie_temporal=serieTemporal()
 print(serie_temporal)
 
-#Modelo 1 serie Temporal
+# MODELO 1 Serie temporal
 
-# serie_temporal=serieTemporal()
-# plot_acf(serie_temporal, lags=50)
-# plt.show()
-# plot_pacf(serie_temporal, lags=50)
-# plt.show()
-# resultado_df = adfuller(serie_temporal)
-# print('p-valor: %f' % resultado_df[1])
+train = serie_temporal[:int(0.8*len(serie_temporal))]
+test = serie_temporal[int(0.8*len(serie_temporal)):]
 
-# modelo = ARIMA(serie_temporal, order=(1, 0, 1))
-# modelo_ajustado = modelo.fit()
+p_range = range(0, 3) 
+d_range = range(0, 3) 
+q_range = range(0, 3)  
 
-# predicciones = modelo_ajustado.forecast(steps=7)
-# print(predicciones)
+best_aic = float("inf")
+best_order = None
+best_model = None
 
-# MODELO 2 Serie temporal
+for p in p_range:
+    for d in d_range:
+        for q in q_range:
+            try:
+                tmp_model = ARIMA(train, order=(p, d, q)).fit()
+                tmp_aic = tmp_model.aic
 
-# train = serie_temporal[:int(0.8*len(serie_temporal))]
-# test = serie_temporal[int(0.8*len(serie_temporal)):]
+                if tmp_aic < best_aic:
+                    best_aic = tmp_aic
+                    best_order = (p, d, q)
+                    best_model = tmp_model
+            except: 
+                continue
 
-# p_range = range(0, 3) 
-# d_range = range(0, 3) 
-# q_range = range(0, 3)  
-
-# best_aic = float("inf")
-# best_order = None
-# best_model = None
-
-# for p in p_range:
-#     for d in d_range:
-#         for q in q_range:
-#             try:
-#                 tmp_model = ARIMA(train, order=(p, d, q)).fit()
-#                 tmp_aic = tmp_model.aic
-
-#                 if tmp_aic < best_aic:
-#                     best_aic = tmp_aic
-#                     best_order = (p, d, q)
-#                     best_model = tmp_model
-#             except: 
-#                 continue
-
-# print(f'Mejor modelo ARIMA: order={best_order} con AIC={best_aic}')
+print(f'Mejor modelo ARIMA: order={best_order} con AIC={best_aic}')
 
 # Mejor modelo ARIMA: order=(0, 1, 2) con AIC=424716.2503949843
 
-# modelo = ARIMA(serie_temporal, order=(0, 1, 2))
-# modelo_ajustado = modelo.fit()
+modelo = ARIMA(serie_temporal, order=(0, 1, 2))
+modelo_ajustado = modelo.fit()
 
-# predicciones = modelo_ajustado.forecast(steps=7)
-# print(predicciones)
+predicciones = modelo_ajustado.forecast(steps=7)
+print(predicciones)
 
-# MODELO 3 Arbol de decisión 
+# MODELO 2 Arbol de decisión 
 X_train, X_test, y_train, y_test=splitData()
 tree_model = DecisionTreeRegressor(random_state=42)
 param_grid = {
@@ -82,3 +66,5 @@ best_params = grid_search.best_params_
 best_score = np.sqrt(-grid_search.best_score_)
 print(f"Mejores parámetros: {best_params}")
 print(f"Puntuación del mejor modelo (RMSE): {best_score}")
+
+#Puntuación del mejor modelo (RMSE): 2920.3785084950914

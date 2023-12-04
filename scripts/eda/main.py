@@ -26,17 +26,6 @@ def serieTemporal():
 
     return serie_temporal
 
-# serie_temporal=serieTemporal()
-
-# plot_acf(serie_temporal, lags=50)
-# plt.show()
-
-# plot_pacf(serie_temporal, lags=50)
-# plt.show()
-
-# resultado_df = adfuller(serie_temporal)
-# print('p-valor: %f' % resultado_df[1])
-
 def columCategorica():
     data = get_dataframe()
     bins = [i for i in range(0, 10001, 1000)]
