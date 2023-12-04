@@ -3,9 +3,12 @@ import pandas as pd
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt
 from statsmodels.tsa.stattools import adfuller
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.tree import DecisionTreeRegressor
 sys.path.append('scripts')
 
 from data_acquisition.main import get_dataframe
+from preprocessing.main import cleanDate
 
 
 def convert_fecha(fecha):
@@ -41,3 +44,10 @@ def columCategorica():
     data['categoria'] = pd.cut(data['NUMERO'], bins=bins, labels=labels, right=False)
     print(data.head())
     return data
+
+def splitData():
+    data=cleanDate()
+    X=data[0]
+    y=data[1]
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    return X_train, X_test, y_train, y_test
