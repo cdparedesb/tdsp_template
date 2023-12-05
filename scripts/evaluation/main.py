@@ -32,3 +32,12 @@ print(f"MSE: {mse}")
 print(f"MAE: {mae}")
 print(f"R²: {r2}")
 print(f"Score de Explicación: {explained_var}")
+
+
+from datetime import datetime
+import pandas as pd
+
+fecha_deseada = "2024-01-01"
+fecha_deseada_timestamp = pd.to_datetime(fecha_deseada).value // 10 ** 9
+numero_predicho = grid_search.predict([[fecha_deseada_timestamp]])
+print(f"La predicción para la fecha {fecha_deseada} es: {numero_predicho[0]}")
