@@ -62,3 +62,4 @@ ruta donde se encuentra guardado el modelo entrenado que se carga en `predictor_
 
     3. Reentrenamiento del Modelo: Si es necesario reentrenar el modelo con nuevos datos, sigue el proceso original de entrenamiento y actualiza el archivo .joblib en la ubicación correspondiente.
 
+
