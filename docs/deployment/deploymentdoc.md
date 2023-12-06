@@ -41,7 +41,7 @@ ruta donde se encuentra guardado el modelo entrenado que se carga en `predictor_
 
 2. Instalar Bibliotecas Necesarias
 
-3. Descargar el Código y el Modelo: predictor_numeros_loteria.py y el modelo guardado (archivo .joblib) en una carpeta de tu elección en tu máquina local. Direccion del repositorio: https://github.com/cdparedesb/tdsp_template 
+3. Descargar el Código y el Modelo: predictor_numeros_loteria.py y el modelo guardado (modelo_numeros_loteria.joblib) en una carpeta de tu elección en tu máquina local. Direccion del repositorio: https://github.com/cdparedesb/tdsp_template 
 
 - **Instrucciones de configuración:** 
     + Como el despligue se realiza de manera local lo unico que se debera configurar son las rutas de los Archivos, Asegúrate de que las rutas en predictor_numeros_loteria.py y del  modelo guardado correspondan a las ubicaciones de los archivos en tu máquina.
