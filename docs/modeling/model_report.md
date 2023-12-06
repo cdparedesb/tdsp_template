@@ -12,35 +12,38 @@ El objetivo principal del modelo es explorar si existe alguna tendencia o patró
 
 ## Descripción del Modelo
 
-El modelo final seleccionado para abordar el problema de predecir números ganadores en la lotería de Bogotá es un modelo de series temporales ARIMA (Autoregressive Integrated Moving Average). Este modelo es bien conocido y ampliamente utilizado en el análisis de series temporales por su capacidad para modelar y pronosticar datos temporales basándose en dependencias anteriores.
+El modelo final seleccionado para abordar el problema de predecir números ganadores en la lotería de Bogotá es un modelo de árbol de decisión. Este modelo es conocido por su capacidad para modelar complejas relaciones no lineales en los datos.
 
 Para desarrollar y afinar este modelo, se siguió una metodología estructurada que incluyó las siguientes etapas:
 
-+ División de Datos: La serie temporal completa se dividió en conjuntos de entrenamiento y prueba. Se utilizó el 80% inicial de los datos para el entrenamiento (train) y el 20% restante para la prueba (test).
++ División de Datos: Se dividió el conjunto de datos en conjuntos de entrenamiento y prueba. Se utilizó el 80% de los datos para el entrenamiento (X_train, y_train) y el 20% restante para la prueba (X_test, y_test).
 
-+ Selección de Parámetros: Se realizó un proceso de búsqueda de cuadrícula (Grid Search) para determinar los parámetros óptimos para el modelo ARIMA. Los parámetros en ARIMA son:
++ Selección de Parámetros: Se empleó un proceso de búsqueda de cuadrícula (Grid Search) para determinar los parámetros óptimos para el modelo de árbol de decisión. Los parámetros en este modelo son:
 
-    - p (Orden Autoregresivo): Número de términos autoregresivos.
-    - d (Orden de Diferenciación): Número de diferenciaciones n-o estacionales requeridas para lograr la estacionariedad.
-    - q (Orden del Promedio Móvil): Número de términos de promedio móvil.
-
-+ Se probaron diferentes combinaciones de estos parámetros dentro de los rangos definidos (0 a 2 para cada uno) para encontrar la combinación que minimiza el Criterio de Información de Akaike (AIC), un indicador de la calidad del modelo que penaliza la complejidad.
-
-+ Ajuste del Modelo: Utilizando la combinación óptima de parámetros encontrada (en este caso, p=0, d=1, q=2), se ajustó el modelo ARIMA al conjunto completo de datos de la serie temporal.
-
-+ Pronóstico: Con el modelo ajustado, se realizó un pronóstico para los siguientes 7 pasos temporales (steps=7).
+    + max_depth (Profundidad Máxima): Profundidad máxima del árbol.
+    + min_samples_split (Mínimo de Muestras para Dividir): Número mínimo de muestras requeridas para dividir un nodo.
+    + min_samples_leaf (Mínimo de Muestras por Hoja): Número mínimo de muestras requeridas para ser una hoja.
+    + Ajuste del Modelo: Utilizando la mejor combinación de parámetros encontrada (max_depth: 3, min_samples_leaf: 1, min_samples_split: 2), se ajustó el modelo de árbol de decisión al conjunto completo de datos de entrenamiento.
 
 ## Evaluación del Modelo
 
-Para evaluar el rendimiento del modelo ARIMA final, se emplearon varias métricas estadísticas comunes en el análisis de series temporales como: 
+Para evaluar el rendimiento del modelo final, se emplearon varias métricas estadísticas comunes en el análisis como por ejemplo: 
 
 `Error Cuadrático Medio (MSE)`: Es una medida estándar que calcula el promedio de los cuadrados de los errores, es decir, la diferencia cuadrática entre los valores observados y los pronosticados. Un MSE más bajo indica un mejor rendimiento del modelo.
 
 `Raíz del Error Cuadrático Medio (RMSE)`: Es la raíz cuadrada del MSE y proporciona una medida del error en las mismas unidades que la variable objetivo. Al igual que el MSE, un RMSE más bajo indica un mejor modelo.
 
+El modelo ajustado fue evaluado utilizando el conjunto de prueba, obteniendo las siguientes métricas:
+
+    + RMSE (Error Cuadrático Medio Raíz): 2920.38
+    + MSE (Error Cuadrático Medio): 8565054.70
+    + MAE (Error Absoluto Medio): 2538.51
+    + R² (Coeficiente de Determinación): -0.00346
+    + Score de Explicación: -0.00329
+
 ## Conclusiones y Recomendaciones
 
-+ Aunque el modelo ARIMA es una herramienta estadística robusta para el análisis de series temporales, su aplicación en la predicción de resultados de la lotería es limitada debido a la naturaleza aleatoria de estos eventos. Las métricas de evaluación proporcionan una visión de la precisión del modelo en términos estadísticos, pero no necesariamente reflejan una capacidad predictiva real en el contexto de la lotería.
++ Aunque el modelo de arbol de decisión es una herramienta estadística robusta para la clasificacion y pronosticos, su aplicación en la predicción de resultados de la lotería es limitada debido a la naturaleza aleatoria de estos eventos. Las métricas de evaluación proporcionan una visión de la precisión del modelo en términos estadísticos, pero no necesariamente reflejan una capacidad predictiva real en el contexto de la lotería.
 
 + Los resultados subrayan la naturaleza fundamentalmente aleatoria de los sorteos de lotería. Cada sorteo es un evento independiente, y los patrones percibidos en los datos históricos no son indicativos de resultados futuros.
 
