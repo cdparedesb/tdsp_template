@@ -21,7 +21,7 @@
 
 - **Diagrama de arquitectura:** 
 
-
+![Diagrama de arquitectura](Imagen_despligue.jpg)
 
 ## Código de despliegue
 
