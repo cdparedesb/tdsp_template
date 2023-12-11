@@ -3,7 +3,7 @@
 
 ## Resumen general de los datos
 
-El conjunto de datos contiene **28,275 observaciones y 6 variables**.
+El conjunto de datos contiene **26.281 observaciones y 6 variables**.
 
 | Variable | Tipo de dato |
 |---|---|
